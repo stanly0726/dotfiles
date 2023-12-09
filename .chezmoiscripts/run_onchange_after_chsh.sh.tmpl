@@ -1,0 +1,17 @@
+#!/bin/bash
+
+ZSH_PATH=$(which zsh)
+
+if [ -z "$ZSH_PATH" ]
+then
+    echo "zsh is not installed"
+    exit 1
+fi
+
+if [ "$SHELL" != "$ZSH_PATH" ]
+then
+    chsh -s "$ZSH_PATH"
+    echo "Shell changed to zsh"
+else
+    echo "Shell is already zsh"
+fi

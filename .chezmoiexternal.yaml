@@ -1,0 +1,18 @@
+# nvim config
+.config/nvim:
+  type: git-repo
+  url: https://github.com/stanly0726/nvim.git
+  clone:
+    args: ['--branch','colemak']
+
+# tmux plugin manager
+.tmux/plugins/tpm:
+  type: git-repo
+  url: https://github.com/tmux-plugins/tpm.git
+
+# fzf
+.fzf:
+  type: git-repo
+  url: https://github.com/junegunn/fzf.git
+  clone:
+    args: ['--depth', '1']
