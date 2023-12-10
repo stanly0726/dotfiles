@@ -26,7 +26,7 @@
 
 # rm alternative
 .local/bin/rip:
-  type: archive-file
+  type: file
   url: https://github.com/nivekuil/rip/releases/download/0.12.0/rip
   executable: true
 
