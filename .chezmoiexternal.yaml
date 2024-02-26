@@ -24,13 +24,13 @@
   refreshPeriod: 672h
   executable: true
 
+{{ if eq .cargo_package "download" }}
 # rm alternative
 .local/bin/rip:
   type: file
   url: https://github.com/nivekuil/rip/releases/download/0.12.0/rip
   executable: true
 
-{{ if eq .chezmoi.os "linux" }}
 # ls alternative
 .local/bin/eza:
   type: archive-file
