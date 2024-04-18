@@ -1,5 +1,17 @@
 {{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" -}}
 
+{{ if eq .chezmoi.os "darwin" }}
+# macOS-specific code
+{{ else if eq .chezmoi.os "linux" }}
+{{   if eq .chezmoi.osRelease.id "debian" }}
+# Debian-specific code
+{{ $update_command := "apt-get update" }}
+{{ $install_command := "apt-get install -y " }} 
+{{   else if eq .chezmoi.osRelease.id "fedora" }}
+# Fedora-specific code
+{{   end }}
+{{ end }}
+
 {{ $packages := list
      "bat"
      "build-essential"
@@ -18,8 +30,8 @@
 
 set -eufo pipefail
 
-{{ $sudo }}apt-get update
-{{ $sudo }}apt-get install -y {{ $packages | join " " }}
+{{ $sudo }}{{ $update_command }}
+{{ $sudo }}{{ $install_command }}{{ $packages | join " " }}
 
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 {{ end -}}
