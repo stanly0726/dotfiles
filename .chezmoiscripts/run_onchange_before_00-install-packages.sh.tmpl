@@ -1,31 +1,14 @@
-{{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" "linux-arch"-}}
-
-{{ if eq .chezmoi.os "darwin" }}
-# macOS-specific code
-{{ else if eq .chezmoi.os "linux" }}
-{{   if eq .chezmoi.osRelease.id "debian" }}
-# Debian-specific code
-{{ $update_command := "apt-get update" }}
-{{ $install_command := "apt-get install -y " }} 
-{{   else if eq .chezmoi.osRelease.id "fedora" }}
-# Fedora-specific code
-{{   else if eq .chezmoi.osRelease.id "arch" }}
-# Arch linux
-{{ $update_command := "pacman -Syu --noconfirm" }}
-{{ $install_command := "pacman -S --noconfirm" }} 
-{{   end }}
-{{ end }}
+{{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" "linux-arch" -}}
 
 {{ $packages := list
      "bat"
-     "build-essential"
      "curl"
      "git"
-     "openssh-server"
+     "lazygit"
      "ripgrep"
      "zsh" -}}
 
-{{ $sudo := "sudo " -}}
+{{ $sudo := "sudo" -}}
 {{ if eq .chezmoi.username "root" -}}
 {{   $sudo = "" -}}
 {{ end -}}
@@ -34,8 +17,21 @@
 
 set -eufo pipefail
 
-{{ $sudo }}{{ $update_command }}
-{{ $sudo }}{{ $install_command }}{{ $packages | join " " }}
+{{ if eq .chezmoi.os "darwin" }}
+# macOS-specific code
+{{ else if eq .chezmoi.os "linux" }}
+{{   if eq .chezmoi.osRelease.id "debian" }}
+    # Debian-specific code
+    {{ $packages = concat $packages (list "openssh-server" "build-essential") }}
+    {{ $sudo }} apt-get update
+    {{ $sudo }} apt-get install -y {{ $packages | join " " }}
+{{   else if eq .chezmoi.osRelease.id "arch" }}
+    # Arch linux
+    {{ $packages = concat $packages (list "openssh" "base-devel") }}
+    {{ $sudo }} pacman -Syu --noconfirm
+    {{ $sudo }} pacman -S --noconfirm {{ $packages | join " " }}
+{{   end }}
+{{ end }}
 
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 {{ end -}}
