@@ -1,0 +1,8 @@
+{{ $packages := list
+     "eza"
+     "rm-improved" -}}
+     
+{{ if eq .cargo_package "build" }}
+#! /bin/bash
+cargo install {{ $packages | join " " }}
+{{ end }}
