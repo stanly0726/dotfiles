@@ -149,7 +149,7 @@ HISTFILE=~/.zsh_history
 
 # Use modern completion system
 autoload -Uz compinit
-compinit
+# compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -191,9 +191,9 @@ path+=("$HOME/.local/bin")
 
 #bat alias
 {{- if lookPath "bat" }}
-    alias cat='bat --paging=never'
+    alias cat='bat'
 {{- else if lookPath "batcat" }}
-    alias cat='catbat --paging=never'
+    alias cat='batcat'
 {{- end }}
 
 # tmux-sessionizer
