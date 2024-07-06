@@ -237,6 +237,7 @@ element-icon {
     background-color:            transparent;
     text-color:                  inherit;
     size:                        24px;
+    padding:                     0px 24px 0px 0px;
     cursor:                      inherit;
 }
 element-text {
