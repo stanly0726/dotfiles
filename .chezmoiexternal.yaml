@@ -27,7 +27,7 @@
 # ls alternative
 .local/bin/eza:
   type: archive-file
-  url: https://github.com/eza-community/eza/releases/download/v0.16.1/eza_x86_64-unknown-linux-gnu.tar.gz
+  url: https://github.com/eza-community/eza/releases/download/v0.20.11/eza_x86_64-unknown-linux-gnu.tar.gz
   executable: true
   path: ./eza
 {{ end }}
