@@ -17,6 +17,11 @@
   clone:
     args: ['--depth', '1']
 
+# alacritty theme
+.config/alacritty/themes:
+  type: git-repo
+  url: https://github.com/alacritty/alacritty-theme.git
+
 {{ if eq .cargo_package "download" }}
 # rm alternative
 .local/bin/rip:
