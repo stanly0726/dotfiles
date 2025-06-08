@@ -4,7 +4,6 @@
   font-family: "JetBrainsMono NFP";
   font-weight: bold;
   font-size: 12px;
-  /* min-height: 10px; */
 }
 
 @import "theme.css";
@@ -21,6 +20,7 @@ tooltip {
 }
 
 #workspaces button {
+  min-height: 22px;
   box-shadow: none;
   text-shadow: none;
   padding: 0px;
@@ -38,8 +38,8 @@ tooltip {
   background: @wb-act-bg;
   color: @wb-act-fg;
   margin-left: 3px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
   margin-right: 3px;
 }
 
@@ -102,6 +102,7 @@ tooltip {
 #network,
 #custom-notifications,
 #custom-power,
+#custom-fan_mode,
 #pulseaudio,
 #custom-spotify,
 #taskbar,

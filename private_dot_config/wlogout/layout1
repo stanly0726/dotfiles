@@ -1,36 +1,36 @@
 {
     "label" : "lock",
     "action" : "loginctl lock-session",
-    "text" : "Lock",
+    "text" : "[L]ock",
     "keybind" : "l"
 }
 {
     "label" : "screen-off",
     "action" : "hyprctl dispatch dpms off",
-    "text" : "Screen off",
+    "text" : "Screen [O]ff",
     "keybind" : "o"
 }
 {
     "label" : "logout",
-    "action" : "hyprctl dispatch exit",
+    "action" : "hyprctl dispatch exec uwsm stop",
     "text" : "Logout",
-    "keybind" : "e"
+    "keybind" : ""
 }
 {
     "label" : "shutdown",
     "action" : "systemctl poweroff",
-    "text" : "Shutdown",
+    "text" : "[S]hutdown",
     "keybind" : "s"
 }
 {
     "label" : "suspend",
     "action" : "systemctl suspend",
-    "text" : "Suspend",
+    "text" : "S[u]spend",
     "keybind" : "u"
 }
 {
     "label" : "reboot",
     "action" : "systemctl reboot",
-    "text" : "Reboot",
+    "text" : "[R]eboot",
     "keybind" : "r"
 }

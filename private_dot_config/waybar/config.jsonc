@@ -1,296 +1,344 @@
 {
-  "layer": "top",
-  "position": "top",
-  "height": 31,
-  "exclusive": true,
-  "passthrough": false,
-  "gtk-layer-shell": true,
-  "reload_style_on_change": true,
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "reload_style_on_change": true,
 
-  "modules-left": [
-    "custom/padd",
+    "modules-left": [
+        "custom/padd",
 
-    "custom/l_end",
-    "custom/power",
-    "custom/cliphist",
-    "custom/r_end",
+        "custom/l_end",
+        "custom/power",
+        "custom/cliphist",
+        "custom/r_end",
 
-    "custom/l_end",
-    "hyprland/workspaces",
-    "custom/r_end",
+        "custom/l_end",
+        "hyprland/workspaces",
+        "custom/r_end",
 
-    "custom/padd",
-  ],
-  "modules-center": [
-    "custom/padd",
+        "custom/padd",
+    ],
+    "modules-center": [
+        "custom/padd",
 
-    "custom/l_end",
-    "idle_inhibitor",
-    "clock",
-    "custom/media",
-    "custom/r_end",
+        "custom/l_end",
+        "idle_inhibitor",
+        "clock",
+        "custom/media",
+        "custom/r_end",
 
-    "custom/padd",
-  ],
-  "modules-right": [
-    "custom/padd",
+        "custom/padd",
+    ],
+    "modules-right": [
+        "custom/padd",
 
-    "custom/l_end",
-    "network",
-    "cpu",
-    "temperature",
-    "memory",
-    "custom/r_end",
+        "custom/l_end",
+        "network",
+        "cpu",
+        "group/thermal",
+        "memory",
+        "custom/r_end",
 
-    "custom/l_end",
-    // "bluetooth",
-    "group/audio",
-    "custom/r_end",
+        "custom/l_end",
+        // "bluetooth",
+        "group/audio",
+        "custom/r_end",
 
-    "custom/l_end",
-    "tray",
-    "custom/r_end",
+        "custom/l_end",
+        "tray",
+        "custom/r_end",
 
-    "custom/padd",
-  ],
+        "custom/padd",
+    ],
 
-  "custom/power": {
-    "format": "{}",
-    "rotate": 0,
-    "exec": "echo ; echo  logout",
-    "on-click": "wlogout -b 2 -c 0 -r 0 -m 0 --layout '/home/stanly/.config/wlogout/layout2' --css '/home/stanly/.config/wlogout/style2.css' --protocol layer-shell",
-    "on-click-right": "wlogout -b 6 -c 0 -r 0 -m 0 --layout '/home/stanly/.config/wlogout/layout1' --css '/home/stanly/.config/wlogout/style1.css' --protocol layer-shell",
-    "interval": 86400, // once every day
-    "tooltip": true,
-  },
-
-  "custom/cliphist": {
-    "format": "{}",
-    "rotate": 0,
-    "exec": "echo ; echo 󰅇 clipboard history",
-    "on-click": "rofi -modi clipboard:~/.local/bin/cliphist-rofi-img -show clipboard -show-icons",
-    "on-click-middle": "cliphist wipe",
-    "interval": 86400, // once every day
-    "tooltip": true,
-  },
-
-  "hyprland/workspaces": {
-    "disable-scroll": true,
-    "on-click": "activate",
-    // "format": "{name}: {icon}",
-    "format": "{name}",
-    "on-scroll-up": "hyprctl dispatch workspace m-1 > /dev/null",
-    "on-scroll-down": "hyprctl dispatch workspace m+1 > /dev/null",
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "urgent": "",
-      "focused": "",
-      "default": "",
+    "custom/power": {
+        "format": "{}",
+        "rotate": 0,
+        "exec": "echo ; echo  logout",
+        "on-click": "wlogout -b 2 -c 0 -r 0 -m 0 --layout '/home/stanly/.config/wlogout/layout2' --css '/home/stanly/.config/wlogout/style2.css' --protocol layer-shell",
+        "on-click-right": "wlogout -b 6 -c 0 -r 0 -m 0 --layout '/home/stanly/.config/wlogout/layout1' --css '/home/stanly/.config/wlogout/style1.css' --protocol layer-shell",
+        "interval": 86400, // once every day
+        "tooltip": true,
     },
-  },
 
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "rotate": 0,
-    "format-icons": {
-      "activated": "󰥔",
-      "deactivated": "",
+    "custom/cliphist": {
+        "format": "{}",
+        "rotate": 0,
+        "exec": "echo ; echo 󰅇 clipboard history",
+        "on-click": "rofi -modi clipboard:~/.local/bin/cliphist-rofi-img -show clipboard -show-icons",
+        "on-click-middle": "cliphist wipe",
+        "interval": 86400, // once every day
+        "tooltip": true,
     },
-  },
 
-  "clock": {
-    "format": "{:%I:%M %p}",
-    "rotate": 0,
-    "format-alt": "{:%R 󰃭 %d·%m·%y}",
-    "tooltip-format": "<tt>{calendar}</tt>",
-    "calendar": {
-      "mode": "month",
-      "mode-mon-col": 3,
-      "on-scroll": 1,
-      "on-click-right": "mode",
-      "format": {
-        "months": "<span color='#ffead3'><b>{}</b></span>",
-        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b>{}</b></span>",
-      },
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "on-click": "activate",
+        // "format": "{name}: {icon}",
+        "format": "{name}",
+        "on-scroll-up": "hyprctl dispatch workspace m-1 > /dev/null",
+        "on-scroll-down": "hyprctl dispatch workspace m+1 > /dev/null",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "focused": "",
+            "default": "",
+        },
     },
-    "actions": {
-      "on-click-right": "mode",
-      "on-click-forward": "tz_up",
-      "on-click-backward": "tz_down",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "rotate": 0,
+        "format-icons": {
+            "activated": "󰥔",
+            "deactivated": "",
+        },
     },
-  },
 
-  "tray": {
-    "icon-size": 18,
-    "rotate": 0,
-    "spacing": 6,
-  },
-
-  "cpu": {
-    "interval": 5,
-    "format": "󰍛 {usage}%",
-    "rotate": 0,
-    "format-alt": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
-    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-  },
-
-  "temperature": {
-    "interval": 5,
-    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "critical-threshold": 80,
-    // "format-critical": "{temperatureC}°C {icon}",
-    "format": "{icon} {temperatureC}°C",
-    "format-icons": ["", "", ""],
-
-  },
-
-  "memory": {
-    "states": {
-      "c": 90, // critical
-      "h": 60, // high
-      "m": 30, // medium
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "rotate": 0,
+        "format-alt": "{:%R 󰃭 %d·%m·%y}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b>{}</b></span>",
+            },
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down",
+        },
     },
-    "interval": 30,
-    "format": "󰾆 {used}GB",
-    "rotate": 0,
-    "format-m": "󰾅 {used}GB",
-    "format-h": "󰓅 {used}GB",
-    "format-c": " {used}GB",
-    "format-alt": "󰾆 {percentage}%",
-    "max-length": 10,
-    "tooltip": true,
-    "tooltip-format": "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB",
-  },
 
-  "network": {
-    "tooltip": true,
-    "format-wifi": " ",
-    "rotate": 0,
-    "format-ethernet": "󰈀 ",
-    "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
-    "format-linked": "󰈀 {ifname} (No IP)",
-    "format-disconnected": "󰖪 ",
-    "tooltip-format-disconnected": "Disconnected",
-    "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
-    "interval": 2,
-  },
-
-  "group/audio": {
-    "orientation": "horizontal",
-    "modules": ["pulseaudio", "pulseaudio#microphone", "bluetooth"],
-    "drawer": {},
-  },
-
-  "pulseaudio": {
-    "format": "{icon} {volume}",
-    "rotate": 0,
-    "format-muted": "",
-    "on-click": "pavucontrol -t 3",
-    "on-click-middle": "wpctl set-mute @DEFAULT_SINK@ toggle",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-    "tooltip-format": "{icon} {desc} // {volume}%",
-    "scroll-step": 5,
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""],
+    "tray": {
+        "icon-size": 18,
+        "rotate": 0,
+        "spacing": 6,
     },
-  },
 
-  "pulseaudio#microphone": {
-    "format": "{format_source}",
-    "rotate": 0,
-    "format-source": "",
-    "format-source-muted": "",
-    "on-click": "pavucontrol -t 4",
-    "on-click-middle": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
-    // "on-click-middle": "volumecontrol.sh -i m",
-    // "on-scroll-up": "volumecontrol.sh -i i",
-    // "on-scroll-down": "volumecontrol.sh -i d",
-    "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
-    "scroll-step": 5,
-  },
-  // modules for padding //
+    "cpu": {
+        "interval": 5,
+        "format": "󰍛 {usage}%",
+        "rotate": 0,
+        "format-alt": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+        "format-icons": [
+            "▁",
+            "▂",
+            "▃",
+            "▄",
+            "▅",
+            "▆",
+            "▇",
+            "█"
+        ],
+    },
+    "group/thermal": {
+        "orientation": "horizontal",
+        "modules": [
+            "temperature",
+            "custom/fan_mode"
+        ],
+        "drawer": {},
+    },
 
-  "bluetooth": {
-    "format": "",
-    "rotate": 0,
-    "format-disabled": "󰂲",
-    "format-connected": " {num_connections}",
-    "format-connected-battery": "{device_alias}-{device_battery_percentage}%",
-    "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
-    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device If this config option is not defined or none of the devices in the list are connected, it will fall back to showing the last connected device.
-    "tooltip-format": "{controller_alias}\n{num_connections} connected",
-    "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%",
-    "on-click": "blueman-manager",
-  },
+    "temperature": {
+        "interval": 5,
+        "thermal-zone": 1,
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ],
+    },
+    "custom/fan_mode": {
+        "exec": "/home/stanly/Projects/fan_mode/fan_mode",
+        "exec-on-event": "on-click",
+        "interval": "once",
+        "format": "{}",
+        "tooltip": true,
+        "return-type": "string",
+        "on-click": "/home/stanly/Projects/fan_mode/fan_mode toggle",
+    },
 
-  "custom/media": {
-    "format": "{}",
-    "escape": true,
-    "return-type": "json",
-    "max-length": 40,
-    "on-click": "playerctl -i firefox play-pause",
-    "on-click-right": "playerctl -i firefox stop",
-    "smooth-scrolling-threshold": 7, // This value was tested using a trackpad, it should be lowered if using a mouse.
-    "on-scroll-up": "playerctl -i firefox previous",
-    "on-scroll-down": "playerctl -i firefox next",
-    "exec": "$HOME/.config/waybar/mediaplayer.py -x firefox 2> /dev/null", // Script in resources/custom_modules folder
-  },
+    "memory": {
+        "states": {
+            "c": 90, // critical
+            "h": 60, // high
+            "m": 30, // medium
+        },
+        "interval": 30,
+        "format": "󰾆 {used}GB",
+        "rotate": 0,
+        "format-m": "󰾅 {used}GB",
+        "format-h": "󰓅 {used}GB",
+        "format-c": " {used}GB",
+        "format-alt": "󰾆 {percentage}%",
+        "max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB",
+    },
 
-  "custom/l_end": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false,
-  },
+    "network": {
+        "tooltip": true,
+        "format-wifi": " ",
+        "rotate": 0,
+        "format-ethernet": "󰈀 ",
+        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+        "format-linked": "󰈀 {ifname} (No IP)",
+        "format-disconnected": "󰖪 ",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+        "interval": 2,
+    },
 
-  "custom/r_end": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false,
-  },
+    "group/audio": {
+        "orientation": "horizontal",
+        "modules": [
+            "pulseaudio",
+            "pulseaudio#microphone",
+            "bluetooth"
+        ],
+        "drawer": {},
+    },
 
-  "custom/sl_end": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false,
-  },
+    "pulseaudio": {
+        "format": "{icon} {volume}",
+        "rotate": 0,
+        "format-muted": "",
+        "on-click": "pavucontrol -t 3",
+        "on-click-middle": "wpctl set-mute @DEFAULT_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "tooltip-format": "{icon} {desc} // {volume}%",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ],
+        },
+    },
 
-  "custom/sr_end": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false,
-  },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "rotate": 0,
+        "format-source": "",
+        "format-source-muted": "",
+        "on-click": "pavucontrol -t 4",
+        "on-click-middle": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+        // "on-click-middle": "volumecontrol.sh -i m",
+        // "on-scroll-up": "volumecontrol.sh -i i",
+        // "on-scroll-down": "volumecontrol.sh -i d",
+        "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
+        "scroll-step": 5,
+    },
+    // modules for padding //
 
-  "custom/rl_end": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false,
-  },
+    "bluetooth": {
+        "format": "",
+        "rotate": 0,
+        "format-disabled": "󰂲",
+        "format-connected": " {num_connections}",
+        "format-connected-battery": "{device_alias}-{device_battery_percentage}%",
+        "format-icons": [
+            "󰥇",
+            "󰤾",
+            "󰤿",
+            "󰥀",
+            "󰥁",
+            "󰥂",
+            "󰥃",
+            "󰥄",
+            "󰥅",
+            "󰥆",
+            "󰥈"
+        ],
+        // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device If this config option is not defined or none of the devices in the list are connected, it will fall back to showing the last connected device.
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%",
+        "on-click": "blueman-manager",
+    },
 
-  "custom/rr_end": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false,
-  },
+    "custom/media": {
+        "format": "{}",
+        "escape": true,
+        "return-type": "json",
+        "max-length": 40,
+        "on-click": "playerctl -i firefox play-pause",
+        "on-click-right": "playerctl -i firefox stop",
+        "smooth-scrolling-threshold": 7, // This value was tested using a trackpad, it should be lowered if using a mouse.
+        "on-scroll-up": "playerctl -i firefox previous",
+        "on-scroll-down": "playerctl -i firefox next",
+        "exec": "$HOME/.config/waybar/mediaplayer.py -x firefox 2> /dev/null", // Script in resources/custom_modules folder
+    },
 
-  "custom/padd": {
-    "format": "  ",
-    "interval": "once",
-    "tooltip": false,
-  },
+    "custom/l_end": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false,
+    },
+
+    "custom/r_end": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false,
+    },
+
+    "custom/sl_end": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false,
+    },
+
+    "custom/sr_end": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false,
+    },
+
+    "custom/rl_end": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false,
+    },
+
+    "custom/rr_end": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false,
+    },
+
+    "custom/padd": {
+        "format": "    ",
+        "interval": "once",
+        "tooltip": false,
+    },
 }

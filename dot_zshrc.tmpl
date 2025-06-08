@@ -25,9 +25,6 @@ setopt HIST_IGNORE_ALL_DUPS
 # Input/output
 #
 
-# Set editor default keymap to emacs (`-e`) or vi (`-v`)
-bindkey -v
-
 # Prompt for spelling correction of commands.
 #setopt CORRECT
 
@@ -148,7 +145,7 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
-autoload -Uz compinit
+# autoload -Uz compinit
 # compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -180,24 +177,24 @@ path+=("$HOME/.local/share/bob/nvim-bin")
 {{ end }}
 
 # zoxide
-{{- if lookPath "zoxide" }}
+{{ if lookPath "zoxide" }}
     eval "$(zoxide init zsh)"
-{{- end }}
+{{ end }}
 
 #eza alias
-{{- if lookPath "eza" }}
+{{ if lookPath "eza" }}
     alias ls="eza"
     alias la="eza -a"
     alias ll="eza -alhgi"
     alias tree="eza --tree --level=2"
-{{- end }}
+{{ end }}
 
 #bat alias
-{{- if lookPath "bat" }}
+{{ if lookPath "bat" }}
     alias cat='bat'
-{{- else if lookPath "batcat" }}
+{{ else if lookPath "batcat" }}
     alias cat='batcat'
-{{- end }}
+{{ end }}
 
 # tmux-sessionizer
     bindkey -s '^f' '~/.local/bin/tmux-sessionizer\n'
@@ -206,23 +203,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+{{ if lookPath "fzf"}}
+source <(fzf --zsh)
+{{ else }}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# go enviroment variable
-path+="usr/local/go/bin"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
-__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+{{ end }}
