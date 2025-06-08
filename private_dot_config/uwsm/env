@@ -1,0 +1,32 @@
+# toolkit backend
+export GDK_BACKEND=wayland x11 *
+export SDL_VIDEODRIVER=wayland
+
+# qt
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_QPA_PLATFORM=wayland;xcb
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_QPA_PLATFORMTHEME=qt6ct
+
+# nvidia
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export __GL_GSYNC_ALLOWED=1
+
+# theming related
+export XCURSOR_SIZE=24
+
+# hardware accel for firefox
+export MOZ_DISABLE_RDD_SANDBOX=1
+export LIBVA_DRIVER_NAME=nvidia
+
+# electron :(
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+
+# ime settings
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+# editor
+export EDITOR=nvim
+
