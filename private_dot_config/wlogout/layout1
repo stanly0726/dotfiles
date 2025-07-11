@@ -18,7 +18,7 @@
 }
 {
     "label" : "shutdown",
-    "action" : "systemctl poweroff",
+    "action" : "killall --wait steam;systemctl poweroff",
     "text" : "[S]hutdown",
     "keybind" : "s"
 }
@@ -30,7 +30,7 @@
 }
 {
     "label" : "reboot",
-    "action" : "systemctl reboot",
+    "action" : "killall --wait steam;systemctl reboot",
     "text" : "[R]eboot",
     "keybind" : "r"
 }
