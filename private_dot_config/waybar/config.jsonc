@@ -160,7 +160,7 @@
 
     "temperature": {
         "interval": 5,
-        "thermal-zone": 1,
+        "thermal-zone": 0,
         "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
         "format-icons": [
