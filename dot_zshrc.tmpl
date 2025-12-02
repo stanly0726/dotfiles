@@ -172,6 +172,8 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 bindkey ';5D' backward-word
 bindkey ';5C' forward-word
 
+export editor=nvim
+
 {{ if ne .chezmoi.osRelease.id "arch" -}}
 path+=("$HOME/.local/share/bob/nvim-bin")
 {{- end }}
