@@ -1,0 +1,12 @@
+{{- if eq .chezmoi.os "darmin" -}}
+#! /bin/bash
+
+brew bundle --file=/dev/stdin <<eufo
+brew "fzf"
+brew "bat"
+brew "lazygit"
+brew "ripgrep"
+EOF
+{{ end -}}
+
+
