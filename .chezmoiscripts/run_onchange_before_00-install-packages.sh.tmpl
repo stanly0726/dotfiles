@@ -17,20 +17,16 @@
 
 set -eufo pipefail
 
-{{ if eq .chezmoi.os "darwin" }}
-# macOS-specific code
-{{ else if eq .chezmoi.os "linux" }}
-{{   if eq .chezmoi.osRelease.id "debian" }}
-    # Debian-specific code
-    {{ $packages = concat $packages (list "openssh-server" "build-essential") }}
-    {{ $sudo }} apt-get update
-    {{ $sudo }} apt-get install -y {{ $packages | join " " }}
-{{   else if eq .chezmoi.osRelease.id "arch" }}
-    # Arch linux
-    {{ $packages = concat $packages (list "openssh" "base-devel") }}
-    {{ $sudo }} pacman -Syu --noconfirm
-    {{ $sudo }} pacman -S --noconfirm {{ $packages | join " " }}
-{{   end }}
+{{ if eq .chezmoi.osRelease.id "debian" }}
+  # Debian-specific code
+  {{ $packages = concat $packages (list "openssh-server" "build-essential") }}
+  {{ $sudo }} apt-get update
+  {{ $sudo }} apt-get install -y {{ $packages | join " " }}
+{{ else if eq .chezmoi.osRelease.id "arch" }}
+  # Arch linux
+  {{ $packages = concat $packages (list "openssh" "base-devel") }}
+  {{ $sudo }} pacman -Syu --noconfirm
+  {{ $sudo }} pacman -S --noconfirm {{ $packages | join " " }}
 {{ end }}
 
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
