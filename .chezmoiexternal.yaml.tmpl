@@ -15,12 +15,14 @@
   url: https://raw.githubusercontent.com/ThePrimeagen/tmux-sessionizer/refs/heads/master/tmux-sessionizer
   executable: true
 
+{{ if eq .chezmoi.osRelease.id "debian" }}
 # fzf
 .fzf:
   type: git-repo
   url: https://github.com/junegunn/fzf.git
   clone:
     args: ['--depth', '1']
+{{ end }}
 
 # alacritty theme
 .config/alacritty/themes:
