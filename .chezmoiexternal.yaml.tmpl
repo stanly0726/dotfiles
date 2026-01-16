@@ -15,7 +15,7 @@
   url: https://raw.githubusercontent.com/ThePrimeagen/tmux-sessionizer/refs/heads/master/tmux-sessionizer
   executable: true
 
-{{ if eq .chezmoi.osRelease.id "debian" }}
+{{ if eq .osid "linux-debian" }}
 # fzf
 .fzf:
   type: git-repo

@@ -17,12 +17,12 @@
 
 set -eufo pipefail
 
-{{ if eq .chezmoi.osRelease.id "debian" }}
+{{ if eq .osid "linux-debian" }}
   # Debian-specific code
   {{ $packages = concat $packages (list "openssh-server" "build-essential") }}
   {{ $sudo }} apt-get update
   {{ $sudo }} apt-get install -y {{ $packages | join " " }}
-{{ else if eq .chezmoi.osRelease.id "arch" }}
+{{ else if eq .osid "linux-arch" }}
   # Arch linux
   {{ $packages = concat $packages (list "openssh" "base-devel") }}
   {{ $sudo }} pacman -Syu --noconfirm
