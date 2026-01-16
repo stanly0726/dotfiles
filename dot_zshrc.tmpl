@@ -174,7 +174,7 @@ bindkey ';5C' forward-word
 
 export editor=nvim
 
-{{ if ne .chezmoi.osRelease.id "arch" -}}
+{{ if ne .osid "linux-arch" -}}
 path+=("$HOME/.local/share/bob/nvim-bin")
 {{- end }}
 
