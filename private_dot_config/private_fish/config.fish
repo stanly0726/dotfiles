@@ -1,4 +1,5 @@
 if status is-interactive
+    fish_config theme choose base16-default
     # Commands to run in interactive sessions can go here
     zoxide init fish | source
     starship init fish | source
