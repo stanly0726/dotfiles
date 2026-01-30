@@ -1,0 +1,13 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export EDITOR:nvim
+SETUVAR __fish_initialized:4300
+SETUVAR fish_key_bindings:fish_default_key_bindings
+
+{{- $home := env "HOME" -}}
+{{-
+$path := list
+  (list $home `/\x2elocal/bin` `\x1e` | join "")
+  (list $home `/\x2ecargo/bin` `\x1e` | join "")
+}}
+SETUVAR fish_user_paths:{{ $path | join "" }}
