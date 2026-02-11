@@ -7,6 +7,4 @@
 
 {{ if eq .osid "linux-debian" }}
     ~/.fzf/install --key-bindings --completion --no-update-rc --no-bash --no-fish
-{{ else if eq .osid "linux-arch" }}
-    {{ $sudo }} pacman -S --noconfirm fzf
 {{ end }}

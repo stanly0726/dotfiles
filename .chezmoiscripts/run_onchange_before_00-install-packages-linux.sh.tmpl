@@ -6,6 +6,8 @@
      "git"
      "lazygit"
      "ripgrep"
+     "tmux"
+     "fish"
      "zsh" -}}
 
 {{ $sudo := "sudo" -}}
@@ -24,7 +26,7 @@ set -eufo pipefail
   {{ $sudo }} apt-get install -y {{ $packages | join " " }}
 {{ else if eq .osid "linux-arch" }}
   # Arch linux
-  {{ $packages = concat $packages (list "openssh" "base-devel") }}
+  {{ $packages = concat $packages (list "openssh" "base-devel" "fzf") }}
   {{ $sudo }} pacman -Syu --noconfirm
   {{ $sudo }} pacman -S --noconfirm {{ $packages | join " " }}
 {{ end }}
