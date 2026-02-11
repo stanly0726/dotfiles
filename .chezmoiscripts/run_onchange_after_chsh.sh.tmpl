@@ -1,17 +1,17 @@
-#!/bin/bash
+#! /bin/bash
 
-ZSH_PATH=$(which zsh)
+SHELL_PATH=$(which {{ .shell }})
 
-if [ -z "$ZSH_PATH" ]
+if [ -z "$SHELL_PATH" ]
 then
-    echo "zsh is not installed"
+    echo "{{ .shell }} is not installed"
     exit 1
 fi
 
-if [ "$SHELL" != "$ZSH_PATH" ]
+if [ "$SHELL" != "$SHELL_PATH" ]
 then
-    chsh -s "$ZSH_PATH"
-    echo "Shell changed to zsh"
+    chsh -s "$SHELL_PATH"
+    echo "Shell changed to {{ .shell }}"
 else
-    echo "Shell is already zsh"
+    echo "Shell is already {{ .shell }}"
 fi

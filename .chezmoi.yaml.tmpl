@@ -3,6 +3,9 @@
 {{- $choices := list "build" "download" -}}
 {{- $cargo_package := promptChoiceOnce . "cargo_package" "download cargo packages binary or build from source" $choices -}}
 
+{{- $choices := list "zsh" "fish" -}}
+{{- $shell := promptChoiceOnce . "shell" "choose default shell to use" $choices -}}
+
 {{- $osID := .chezmoi.os -}}
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
@@ -12,5 +15,6 @@ data:
   email: {{ $email | quote }}
   osid: {{ $osID | quote }}
   cargo_package: {{ $cargo_package | quote }} 
+  shell: {{ $shell | quote }} 
 git:
   autoCommit: true
