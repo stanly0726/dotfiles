@@ -24,6 +24,11 @@ set -eufo pipefail
   {{ $packages = concat $packages (list "openssh-server" "build-essential") }}
   {{ $sudo }} apt-get update
   {{ $sudo }} apt-get install -y {{ $packages | join " " }}
+{{ else if eq .osid "linux-ubuntu" }}
+  # Ubuntu-specific code
+  {{ $packages = concat $packages (list "openssh-server" "build-essential") }}
+  {{ $sudo }} apt-get update
+  {{ $sudo }} apt-get install -y {{ $packages | join " " }}
 {{ else if eq .osid "linux-arch" }}
   # Arch linux
   {{ $packages = concat $packages (list "openssh" "base-devel" "fzf") }}
