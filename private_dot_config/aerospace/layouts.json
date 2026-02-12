@@ -1,0 +1,63 @@
+{
+    "$Schema": "https://raw.githubusercontent.com/CarterMcAlister/aerospace-layout-manager/main/layoutConfig.schema.json",
+    "stashWorkspace": "S",
+    "layouts": {
+        "communication": {
+            "workspace": "4",
+            "layout": "h_tiles",
+            "orientation": "horizontal",
+            "windows": [
+                {
+                    "windows": [
+                        {
+                            "bundleId": "Mattermost.Desktop"
+                        },
+                        {
+                            "bundleId": "ru.keepcoder.Telegram"
+                        }
+                    ],
+                    "orientation": "vertical",
+                    "size": "22/100"
+                },
+                {
+                    "bundleId": "com.microsoft.Outlook",
+                    "size": "23/100"
+                },
+                {
+                    "bundleId": "com.microsoft.teams2",
+                    "size": "55/100"
+                }
+            ]
+        },
+        "terminal": {
+            "workspace": "1",
+            "layout": "h_tiles",
+            "orientation": "horizontal",
+            "windows": [
+                {
+                    "bundleId": "com.mitchellh.ghostty"
+                }
+            ]
+        },
+        "browser": {
+            "workspace": "5",
+            "layout": "h_tiles",
+            "orientation": "horizontal",
+            "windows": [
+                {
+                    "bundleId": "app.zen-browser.zen"
+                }
+            ]
+        },
+        "note": {
+            "workspace": "0",
+            "layout": "h_tiles",
+            "orientation": "horizontal",
+            "windows": [
+                {
+                    "bundleId": "md.obsidian"
+                }
+            ]
+        }
+    }
+}
