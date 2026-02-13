@@ -244,6 +244,11 @@ find_dirs() {
 
         [[ -d "$path" ]] && find "$path" -mindepth 1 -maxdepth "${depth:-${TS_MAX_DEPTH:-1}}" -path '*/.git' -prune -o -type d -print
     done
+
+    # sepcial case for creating main session
+    if ! has_session "main"; then
+        echo "[TMUX] main"
+    fi
 }
 
 handle_session_cmd() {
@@ -331,13 +336,17 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 
+if [[ $selected == 'main' ]] && [[ $selected_name == 'main' ]]; then
+    selected=~
+fi
+
 if ! is_tmux_running; then
     tmux new-session -ds "$selected_name" -c "$selected"
     hydrate "$selected_name" "$selected"
 fi
 
 if ! has_session "$selected_name"; then
-    tmux new-session -ds "$selected_name" -c "$selected"
+   tmux new-session -ds "$selected_name" -c "$selected"
     hydrate "$selected_name" "$selected"
 fi
 
