@@ -1,8 +1,5 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
 
-{{- $choices := list "build" "download" -}}
-{{- $cargo_package := promptChoiceOnce . "cargo_package" "download cargo packages binary or build from source" $choices -}}
-
 {{- $choices := list "zsh" "fish" -}}
 {{- $shell := promptChoiceOnce . "shell" "choose default shell to use" $choices -}}
 
@@ -14,7 +11,6 @@
 data:
   email: {{ $email | quote }}
   osid: {{ $osID | quote }}
-  cargo_package: {{ $cargo_package | quote }} 
   shell: {{ $shell | quote }} 
 git:
   autoCommit: true

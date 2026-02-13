@@ -28,18 +28,3 @@
 .config/alacritty/themes:
   type: git-repo
   url: https://github.com/alacritty/alacritty-theme.git
-
-{{ if eq .cargo_package "download" }}
-# rm alternative
-.local/bin/rip:
-  type: file
-  url: https://github.com/nivekuil/rip/releases/download/0.12.0/rip
-  executable: true
-
-# ls alternative
-.local/bin/eza:
-  type: archive-file
-  url: https://github.com/eza-community/eza/releases/download/v0.20.11/eza_x86_64-unknown-linux-gnu.tar.gz
-  executable: true
-  path: ./eza
-{{ end }}
