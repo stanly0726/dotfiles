@@ -10,13 +10,13 @@ config-version = 2
 after-startup-command = [
     # JankyBorders has a built-in detection of already running process,
     # so it won't be run twice on AeroSpace restart
-    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=6.0',
+    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
     # use aerospace-layout-manager to run app at startup
     'exec-and-forget /Users/stanly/.config/aerospace/startup.sh'
 ]
 
 on-focus-changed = [
-    'exec-and-forget [ $(aerospace list-windows --workspace focused | wc -l) -eq 1 ] && borders width=0.0 || borders width=6.0',
+    'exec-and-forget [ $(aerospace list-windows --workspace focused | wc -l) -eq 1 ] && borders width=0.0 || borders width=5.0',
 ]
 
 # Start AeroSpace at login
@@ -76,12 +76,12 @@ on-mode-changed = []
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-    inner.horizontal = 15   
-    inner.vertical =   15
-    outer.left =       15
-    outer.bottom =     15
-    outer.top =        5
-    outer.right =      15
+    inner.horizontal = 12
+    inner.vertical =   12
+    outer.left =       12
+    outer.bottom =     12
+    outer.top =        4
+    outer.right =      12
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -235,11 +235,6 @@ on-mode-changed = []
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = ['layout floating']
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.teams2'
-if.window-title-regex-substring = '紅組-站立會議 | Microsoft Teams'
-run = ['move-node-to-workspace --focus-follows-window 9']
 
 [workspace-to-monitor-force-assignment]
 0 = [2, 1]
