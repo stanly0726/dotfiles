@@ -175,33 +175,36 @@ bindkey ';5D' backward-word
 bindkey ';5C' forward-word
 
 export editor=nvim
+{{-  if ne .osid "linux-arch" }}
 
-{{ if ne .osid "linux-arch" -}}
+# bob(nvim version manager)
 path+=("$HOME/.local/share/bob/nvim-bin")
 {{- end }}
+{{- if lookPath "zoxide" }}
 
 # zoxide
-{{- if lookPath "zoxide" }}
-    eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
 {{- end }}
+{{- if lookPath "eza" }}
 
 #eza alias
-{{- if lookPath "eza" }}
-    alias ls="eza"
-    alias la="eza -a"
-    alias ll="eza -alhgi"
-    alias tree="eza --tree --level=2"
+alias ls="eza"
+alias la="eza -a"
+alias ll="eza -alhgi"
+alias tree="eza --tree --level=2"
 {{- end }}
+{{- if lookPath "bat" }}
 
 #bat alias
-{{- if lookPath "bat" }}
-    alias cat='bat'
+alias cat='bat'
 {{- else if lookPath "batcat" }}
-    alias cat='batcat'
+
+#bat alias
+alias cat='batcat'
 {{- end }}
 
 # tmux-sessionizer
-    bindkey -s '^f' '~/.local/bin/tmux-sessionizer\n'
+bindkey -s '^f' '~/.local/bin/tmux-sessionizer\n'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
