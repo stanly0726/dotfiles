@@ -3,14 +3,21 @@
 {{- $choices := list "zsh" "fish" -}}
 {{- $shell := promptChoiceOnce . "shell" "choose default shell to use" $choices -}}
 
+{{- $secret := promptBoolOnce . "secret" "apply encrypted secret files" -}}
+
 {{- $osID := .chezmoi.os -}}
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
+encryption: "age"
 data:
   email: {{ $email | quote }}
   osid: {{ $osID | quote }}
   shell: {{ $shell | quote }} 
+  secret: {{ $secret }}
 git:
   autoCommit: true
+age:
+  identity: {{ (env "HOME") -}} /.age_private_key
+  recipient: "age1k0wruvv504t26utpdpmn28l5us9jctqmcztsv3yv2r6zc4yc8q4sputhmp"
