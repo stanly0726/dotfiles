@@ -1,6 +1,8 @@
 # font-family = FiraCode Nerd Font
 # font-family = JetBrainsMono Nerd Font
 font-family = Iosevka Term Extended
+font-size = 18
+font-feature = -calt
 
 # theme = nord
 background-opacity = 0.95
