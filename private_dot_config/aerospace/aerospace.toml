@@ -12,10 +12,11 @@ after-startup-command = [
     # so it won't be run twice on AeroSpace restart
     'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
     # use aerospace-layout-manager to run app at startup
-    'exec-and-forget /Users/stanly/.config/aerospace/startup.sh'
+    'exec-and-forget /Users/stanly/.config/aerospace/startup.sh > /tmp/aerospace-startup.log 2>&1'
 ]
 
 on-focus-changed = [
+    # set border width to 0 if only one window in workspace
     'exec-and-forget [ $(aerospace list-windows --workspace focused | wc -l) -eq 1 ] && borders width=0.0 || borders width=5.0',
 ]
 
@@ -121,10 +122,10 @@ on-mode-changed = []
     alt-comma = 'layout accordion horizontal vertical'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-    alt-h = 'focus left'
-    alt-j = 'focus down'
-    alt-k = 'focus up'
-    alt-l = 'focus right'
+    alt-ctrl-h = 'focus left'
+    alt-ctrl-j = 'focus down'
+    alt-ctrl-k = 'focus up'
+    alt-ctrl-l = 'focus right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     alt-shift-h = 'move left'
@@ -149,6 +150,18 @@ on-mode-changed = []
     alt-9 = 'workspace 9'
     alt-0 = 'workspace 0'
     alt-d = 'workspace S'
+    alt-cmd-1 = 'workspace 1'
+    alt-cmd-2 = 'workspace 2'
+    alt-cmd-3 = 'workspace 3'
+    alt-cmd-4 = 'workspace 4'
+    alt-cmd-5 = 'workspace 5'
+    alt-cmd-6 = 'workspace 6'
+    alt-cmd-7 = 'workspace 7'
+    alt-cmd-8 = 'workspace 8'
+    alt-cmd-9 = 'workspace 9'
+    alt-cmd-0 = 'workspace 0'
+    alt-cmd-d = 'workspace S'
+
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace --focus-follows-window 1'
@@ -186,55 +199,11 @@ on-mode-changed = []
     alt-shift-j = ['join-with down', 'mode main']
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
-#
-# [[on-window-detected]]
-# if.app-id = 'com.microsoft.teams2'
-# if.during-aerospace-startup = true
-# run = ['move-node-to-workspace 4']
-#
-# [[on-window-detected]]
-# if.app-id = 'com.apple.iCal'
-# if.during-aerospace-startup = true
-# run = ['move-node-to-workspace 4']
-#
-# [[on-window-detected]]
-# if.app-id = 'com.microsoft.Outlook'
-# if.during-aerospace-startup = true
-# run = ['move-node-to-workspace 4']
-#
-# [[on-window-detected]]
-# if.app-id = 'Mattermost.Desktop'
-# if.during-aerospace-startup = true
-# run = ['move-node-to-workspace 4']
-#
-# [[on-window-detected]]
-# if.app-id = 'ru.keepcoder.Telegram'
-# if.during-aerospace-startup = true
-# run = ['move-node-to-workspace 4']
-#
-# [[on-window-detected]]
-# if.app-id = 'app.zen-browser.zen'
-# if.during-aerospace-startup = true
-# run = ['move-node-to-workspace 5']
-#
-# [[on-window-detected]]
-# if.app-id = 'com.microsoft.rdc.macos'
-# if.during-aerospace-startup = true
-# run = ['move-node-to-workspace 6']
-#
-# [[on-window-detected]]
-# if.app-id = 'md.obsidian'
-# if.during-aerospace-startup = true
-# run = ['move-node-to-workspace 0']
-#
-# [[on-window-detected]]
-# if.app-id = 'com.mitchellh.ghostty'
-# if.during-aerospace-startup = true
-# run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari.WebApp.45717323-C794-4038-B58B-35D767AE802E' # google meet
+run = ['move-node-to-workspace 9']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = ['layout floating']
-
-[workspace-to-monitor-force-assignment]
-0 = [2, 1]

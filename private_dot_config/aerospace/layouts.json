@@ -4,7 +4,7 @@
     "layouts": {
         "communication": {
             "workspace": "4",
-            "layout": "h_tiles",
+            "layout": "tiles",
             "orientation": "horizontal",
             "windows": [
                 {
@@ -17,15 +17,18 @@
                         }
                     ],
                     "orientation": "vertical",
-                    "size": "22/100"
+                    "size": "6/15"
                 },
                 {
-                    "bundleId": "com.microsoft.Outlook",
-                    "size": "23/100"
-                },
-                {
-                    "bundleId": "com.microsoft.teams2",
-                    "size": "55/100"
+                    "windows": [
+                        {
+                            "bundleId": "com.apple.Safari.WebApp.DA80CD96-6D53-4F5E-8FF1-410D111CCF98"
+                        },
+                        {
+                            "bundleId": "com.apple.mail"
+                        }
+                    ],
+                    "orientation": "vertical"
                 }
             ]
         },
@@ -36,6 +39,16 @@
             "windows": [
                 {
                     "bundleId": "com.mitchellh.ghostty"
+                }
+            ]
+        },
+        "news": {
+            "workspace": "2",
+            "layout": "h_tiles",
+            "orientation": "horizontal",
+            "windows": [
+                {
+                    "bundleId": "com.ranchero.NetNewsWire-Evergreen"
                 }
             ]
         },
