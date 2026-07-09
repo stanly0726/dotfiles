@@ -184,6 +184,11 @@ on-mode-changed = []
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
 
+    cmd-h = [] # Disable cmd-h "hide application"
+    cmd-alt-h = [] # Disable cmd-alt-h "hide others"
+    cmd-m = [] # Disable cmd-h "hide application"
+    cmd-alt-m = [] # Disable cmd-alt-h "hide others"
+
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
