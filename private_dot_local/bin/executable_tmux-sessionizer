@@ -233,6 +233,13 @@ find_dirs() {
     # note: TS_SEARCH_PATHS is an array of paths to search for directories
     # if the path ends with :number, it will search for directories with a max depth of number ;)
     # if there is no number, it will search for directories with a max depth defined by TS_MAX_DEPTH or 1 if not set
+
+    # build exclude args from TS_EXCLUDE_PATH (array of absolute paths)
+    exclude_args=()
+    for exclude in "${TS_EXCLUDE_PATHS[@]}"; do
+        exclude_args+=(-not -path "$exclude")
+    done
+
     for entry in "${TS_SEARCH_PATHS[@]}"; do
         # Check if entry as :number as suffix then adapt the maxdepth parameter
         if [[ "$entry" =~ ^([^:]+):([0-9]+)$ ]]; then
@@ -242,7 +249,7 @@ find_dirs() {
             path="$entry"
         fi
 
-        [[ -d "$path" ]] && find "$path" -mindepth 1 -maxdepth "${depth:-${TS_MAX_DEPTH:-1}}" -path '*/.git' -prune -o -type d -print
+        [[ -d "$path" ]] && find "$path" -mindepth 1 -maxdepth "${depth:-${TS_MAX_DEPTH:-1}}" -path '*/.git' -prune -o -type d ${exclude_args[@]} -print
     done
 
     # sepcial case for creating main session
