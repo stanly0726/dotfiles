@@ -5,7 +5,7 @@ font-size = 20
 font-feature = -calt
 
 theme = Ghostty Default Style Dark
-# theme = nord
+# theme = Everforest Dark Hard
 background = #272E33
 # background-opacity = 0.95
 window-padding-x = 5
